@@ -5,7 +5,7 @@
     <classes>
       <class name="webbasic.SmokeTest">
         <methods>
-          <include name="assertExistingObject"/>
+          <include name="assertCreateObject"/>
         </methods>
       </class> <!-- webbasic.SmokeTest -->
     </classes>
