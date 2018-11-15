@@ -1,5 +1,7 @@
 package webbasic;
 
+import java.awt.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -59,7 +61,7 @@ public class SmokeTest {
 		System.out.println(marker.getLocation());
 		((JavascriptExecutor) driver).executeScript(""
 				+ "var x = document.getElementsByClassName(\"leaflet-marker-icon place-form-marker-icon leaflet-zoom-animated leaflet-clickable leaflet-marker-draggable\");"
-				+ "x[0].style.marginLeft=\"-40px\"");
+				+ "x[0].style.marginLeft=\"-400px\"");
 
 		WebElement chooseCategoryButton = driver.findElement(By.xpath("//*[@id=\"ember937\"]"));
 		chooseCategoryButton.click();
@@ -67,17 +69,18 @@ public class SmokeTest {
 
 		//*[@id="ember988"]/div/div[2]/select
 		WebElement firstCategorySelect = driver.findElement(By.xpath("//*[@id=\"ember988\"]/div/div[2]/select"));
-//		firstCategorySelect.click();
+		firstCategorySelect.click();
 		firstCategorySelect.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN, Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ENTER);
 		Thread.sleep(1000);
 
 		WebElement secondCategorySelect = driver.findElement(By.xpath("//*[@id=\"ember988\"]/div/div[3]/select"));
-		secondCategorySelect.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
+		secondCategorySelect.click();
+		secondCategorySelect.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
 		Thread.sleep(1000);
 
 		WebElement thirdCategorySelect = driver.findElement(By.xpath("//*[@id=\"ember988\"]/div/div[4]/select"));
 //		thirdCategorySelect.click();
-		thirdCategorySelect.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
+		thirdCategorySelect.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
 		Thread.sleep(1000);
 
 
@@ -94,6 +97,7 @@ public class SmokeTest {
 		driver.findElement(By.xpath("//*[@id=\"place-form\"]/div[10]/div/button[1]")).click();
 		Thread.sleep(1000);
 		
+
 		WebElement createdObject = driver.findElement(By.className("name"));
 		System.out.println("title attribute"+ createdObject.getAttribute("title"));
 		Assert.assertEquals(createdObject.getAttribute("title"), "Milky");		
@@ -102,7 +106,7 @@ public class SmokeTest {
 	
 	@Test
 	public void assertExistingObject() throws InterruptedException {
-//	nEJLA
+
 		
 		driver.get("http://www.navigator.ba");
 		Thread.sleep(1000);
@@ -122,11 +126,12 @@ public class SmokeTest {
 		title=title.toLowerCase();
 		title=title.replace("\"", "");
 		System.out.println(title);
-		Assert.assertEquals(title , "hotel han");	
-//		driver.findElement(By.xpath("//*[@id=\"ember551\"]/img")).click();
+		Assert.assertEquals(title , "hotel han");
+
+		driver.findElement(By.xpath("//*[@id=\"ember551\"]/img")).click();
 //		
 }
-	
+//	@Test
 //	public void assertExistingObjectInList() throws InterruptedException {
 //		driver.get("http://www.navigator.ba");
 //		Thread.sleep(1000);
