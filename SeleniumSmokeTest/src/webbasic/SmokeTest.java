@@ -128,36 +128,5 @@ public class SmokeTest {
 		driver.findElement(By.xpath("//*[@id=\"ember551\"]/img")).click();
 //		
 }
-//	@Test
-//	public void assertExistingObjectInList() throws InterruptedException {
-//		driver.get("http://www.navigator.ba");
-//		Thread.sleep(1000);
-//		WebElement searchInputField = driver.findElement(By.xpath("//*[@id=\"ember564\"]"));
-//		searchInputField.click();
-//		searchInputField.sendKeys("hotel han");
-//		Thread.sleep(1000);
-//		searchInputField.sendKeys(Keys.ENTER);
-//		Thread.sleep(1000);
-//		
-//		List<WebElement> searcResultItems = driver.findElements(By.className("name"));
-//		boolean foundElement = false;
-//		for(WebElement searcResultItem : searcResultItems  ) {
-//			String titleValue = searcResultItem.getAttribute("title");
-//			System.out.println("Prvobitni title:" + titleValue);
-//			titleValue = titleValue.replaceAll("\"", "");
-//			System.out.println("Title nakon izbacivanja \":" + titleValue);
-//			titleValue = titleValue.toLowerCase();
-//			System.out.println("Title nakon smanjivanja slova:" + titleValue);
-//			System.out.println();
-//			
-//			if(titleValue.equals("hotel han")) {
-//				searcResultItem.click();
-//				foundElement = true;
-//				break;
-//			}
-//		}
-//		
-//		Assert.assertTrue(foundElement);		
-//	}	
 	
 }
