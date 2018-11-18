@@ -1,1 +1,1 @@
-java -cp "C:\Users\Nejla\git\Smoke-test\SeleniumSmokeTest\lib\*" org.testng.TestNG C:\Users\Nejla\git\Smoke-test\SeleniumSmokeTest\testng.xml
+java -cp "C:\Users\Nejla\git\Smoke-test\SeleniumSmokeTest\lib\*;C:\Users\Nejla\git\Smoke-test\SeleniumSmokeTest\bin" org.testng.TestNG C:\Users\Nejla\git\Smoke-test\SeleniumSmokeTest\testng.xml
