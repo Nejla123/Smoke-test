@@ -98,8 +98,7 @@ public class SmokeTest {
 
 		WebElement createdObject = driver.findElement(By.className("name"));
 		System.out.println("title attribute"+ createdObject.getAttribute("title"));
-		Assert.assertEquals(createdObject.getAttribute("title"), "Milky");		
-
+		Assert.assertEquals(createdObject.getAttribute("title"), "Milky");
 	}
 	
 	@Test
