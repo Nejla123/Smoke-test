@@ -1,14 +1,13 @@
 package webbasic;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
-
-import org.testng.annotations.Test;
 
 public class SmokeTest {
 	
@@ -23,16 +22,13 @@ public class SmokeTest {
 	
 	@Test
 	public void assertCreateObject() throws InterruptedException {
-
-		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\Nejla\\Downloads\\chromedriver_win32\\chromedriver.exe");
 		
-		// WebElement element = driver.findElement(By.id(""));
+		System.out.println("Starting test assertCreateObject");
+		
 		driver.get("http://www.navigator.ba");
 
 		WebElement createObjectLink = driver.findElement(By.xpath("//*[@id=\"ember572\"]/span[2]"));
 		createObjectLink.click();
-		// driver.findElement(By.xpath("//*[@id=\"ember572\"]/span[2]")).click();
 
 		WebElement nameField = driver.findElement(By.xpath("//*[@id=\"poi_name\"]"));
 		nameField.sendKeys("Milky");
@@ -41,9 +37,6 @@ public class SmokeTest {
 		cityField.sendKeys("Sarajevo");
 		Thread.sleep(1000);
 		cityField.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
-
-		// driver.findElement(By.xpath("//*[@id=\"poi_city_name\"]")).sendKeys(Keys.ARROW_DOWN,
-		// Keys.ENTER);
 
 		WebElement placeField = driver.findElement(By.xpath("//*[@id=\"poi_place_id\"]"));
 		placeField.sendKeys("Omera Kovača");
@@ -54,9 +47,7 @@ public class SmokeTest {
 		WebElement houseNumberElement = driver.findElement(By.xpath("//*[@id=\"poi_house_number\"]"));
 		houseNumberElement.sendKeys("4");
 		Thread.sleep(1000);
-
-		WebElement marker = driver.findElement(By.xpath("//*[@id=\"ember628\"]/div[2]/div[2]/div[3]/div"));
-		System.out.println(marker.getLocation());
+	
 		((JavascriptExecutor) driver).executeScript(""
 				+ "var x = document.getElementsByClassName(\"leaflet-marker-icon place-form-marker-icon leaflet-zoom-animated leaflet-clickable leaflet-marker-draggable\");"
 				+ "x[0].style.marginLeft=\"-400px\"");
@@ -65,7 +56,6 @@ public class SmokeTest {
 		chooseCategoryButton.click();
 		Thread.sleep(1000);
 
-		//*[@id="ember988"]/div/div[2]/select
 		WebElement firstCategorySelect = driver.findElement(By.xpath("//*[@id=\"ember988\"]/div/div[2]/select"));
 		firstCategorySelect.click();
 		firstCategorySelect.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN, Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ENTER);
@@ -77,7 +67,6 @@ public class SmokeTest {
 		Thread.sleep(1000);
 
 		WebElement thirdCategorySelect = driver.findElement(By.xpath("//*[@id=\"ember988\"]/div/div[4]/select"));
-//		thirdCategorySelect.click();
 		thirdCategorySelect.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
 		Thread.sleep(1000);
 
@@ -98,12 +87,15 @@ public class SmokeTest {
 
 		WebElement createdObject = driver.findElement(By.className("name"));
 		System.out.println("title attribute"+ createdObject.getAttribute("title"));
-		Assert.assertEquals(createdObject.getAttribute("title"), "Milky");
+		AssertJUnit.assertEquals(createdObject.getAttribute("title"), "Milky");
+		
+		System.out.println("Finished test assertCreateObject");
 	}
 	
 	@Test
 	public void assertExistingObject() throws InterruptedException {
 
+		System.out.println("Starting test assertExistingObject");
 		
 		driver.get("http://www.navigator.ba");
 		Thread.sleep(1000);
@@ -123,9 +115,11 @@ public class SmokeTest {
 		title=title.toLowerCase();
 		title=title.replace("\"", "");
 		System.out.println(title);
-		Assert.assertEquals(title , "hotel han");
+		AssertJUnit.assertEquals(title , "hotel han");
 
 		driver.findElement(By.xpath("//*[@id=\"ember551\"]/img")).click();
+		
+		System.out.println("Finished test assertExistingObject");
 //		
 }
 	
