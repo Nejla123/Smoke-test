@@ -3,11 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="webbasic.SmokeTest">
+      <class name="webbasic.test.FillFieldsCreateObject">
         <methods>
-          <include name="assertCreateObject"/>
+          <include name="setupEnviromnent"/>
+          <include name="testFillAllFields"/>
         </methods>
-      </class> <!-- webbasic.SmokeTest -->
+      </class> <!-- webbasic.test.FillFieldsCreateObject -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
