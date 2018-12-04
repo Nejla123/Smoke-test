@@ -13,7 +13,8 @@ import webbasic.model.SuggestChanges;
 public class CancelSuggestChanges {
 	private WebDriver driver;
 	private SuggestChanges suggestChanges;
-	
+	private String baseURL = "http://www.navigator.ba";
+
 	@BeforeTest
 	public void setupEnviromnent() {
 		System.setProperty("webdriver.chrome.driver",
@@ -21,24 +22,19 @@ public class CancelSuggestChanges {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		suggestChanges = new SuggestChanges(driver);
+	}
 
-}	@Test
+	@Test
 	public void testCancelButton() throws InterruptedException {
-		driver.get("http://www.navigator.ba");
+		driver.get(baseURL);
 		suggestChanges.clickOnSuggestChangeslink();
 		suggestChanges.setName("Nejla");
 		suggestChanges.setComment("Very good");
 		suggestChanges.clickOnCancelbutton();
-		
 
 		WebElement closesuggestchange = driver.findElement(By.xpath("//*[@id=\"ember564\"]"));
 		String frontpage = closesuggestchange.getAttribute("id");
 		Assert.assertEquals(frontpage, "ember564");
-		
-		
-		
-		
-		
-		
+
 	}
 }

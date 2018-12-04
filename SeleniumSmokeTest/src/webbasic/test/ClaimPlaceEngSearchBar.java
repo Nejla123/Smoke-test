@@ -14,7 +14,8 @@ public class ClaimPlaceEngSearchBar {
 
 	private WebDriver driver;
 	private EngSearchBar engSearchBar;
-	
+	private String baseURL = "http://www.navigator.ba";
+
 	@BeforeTest
 	public void setupEnviromnent() {
 		System.setProperty("webdriver.chrome.driver",
@@ -23,11 +24,12 @@ public class ClaimPlaceEngSearchBar {
 		driver.manage().window().maximize();
 		engSearchBar = new EngSearchBar(driver);
 
-}
+	}
+
 	@Test
 	public void testClaimOnEng() throws InterruptedException {
-		
-		driver.get("http://www.navigator.ba");
+
+		driver.get(baseURL);
 		engSearchBar.clickOnEngButton();
 		engSearchBar.clikOnSearchBar();
 		engSearchBar.setNameofObject("Pekara Dukat");
@@ -48,9 +50,7 @@ public class ClaimPlaceEngSearchBar {
 		Thread.sleep(1000);
 		WebElement alertmessage = driver.findElement(By.xpath("//*[@id=\"mCSB_5\"]/div[1]/div/div/div"));
 		String message = alertmessage.getAttribute("class");
-		Assert.assertEquals(message,"alert alert-success");
+		Assert.assertEquals(message, "alert alert-success");
 
-		
-		
 	}
 }

@@ -13,7 +13,8 @@ import webbasic.model.SearchBar;
 public class ClaimPlaceBsSearchBar {
 	private WebDriver driver;
 	private SearchBar searchBar;
-	
+	private String baseURL = "http://www.navigator.ba";
+
 	@BeforeTest
 	public void setupEnviromnent() {
 		System.setProperty("webdriver.chrome.driver",
@@ -22,11 +23,12 @@ public class ClaimPlaceBsSearchBar {
 		driver.manage().window().maximize();
 		searchBar = new SearchBar(driver);
 
-}
+	}
+
 	@Test
 	public void testSuggestChanges() throws InterruptedException {
-		
-		driver.get("http://www.navigator.ba");
+
+		driver.get(baseURL);
 		searchBar.clikOnSearchBar();
 		searchBar.setNameofObject("Pekara Dukat");
 		Thread.sleep(1000);
@@ -46,10 +48,8 @@ public class ClaimPlaceBsSearchBar {
 		Thread.sleep(1000);
 		WebElement alertmessage = driver.findElement(By.xpath("//*[@id=\"mCSB_5\"]/div[1]/div/div/div"));
 		String message = alertmessage.getAttribute("class");
-		Assert.assertEquals(message,"alert alert-success");
+		Assert.assertEquals(message, "alert alert-success");
 
-		
-		
 	}
 
 }

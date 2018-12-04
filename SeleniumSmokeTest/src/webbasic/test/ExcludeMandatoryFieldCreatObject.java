@@ -13,6 +13,7 @@ import webbasic.model.CreateObject;
 public class ExcludeMandatoryFieldCreatObject {
 	private WebDriver driver;
 	private CreateObject createObject;
+	private String baseURL = "http://www.navigator.ba";
 
 	@BeforeTest
 	public void setupEnviromnent() {
@@ -26,50 +27,42 @@ public class ExcludeMandatoryFieldCreatObject {
 
 	@Test
 	public void testExcludeMandatoryField() throws InterruptedException {
-		driver.get("http://www.navigator.ba");
+		driver.get(baseURL);
 		createObject.clickOnCreateObjectLink();
 		createObject.setName("Milky");
 		createObject.setAndSelectCity("Sarajevo");
 		createObject.setAndSelectPlace("Omera Kovača");
 		createObject.setHouseNumber("4");
-		
+
 		createObject.moveMarkerLeft("-400px");
-		
+
 		createObject.setTagsField("#kafa");
-		
+
 		createObject.scrollDownBy(-400);
-		
+
 		createObject.clickOnSaturday();
 		createObject.clickOnTuesday();
 		createObject.setFrom("10");
 		createObject.setTo("22");
-		
+
 		createObject.setHomePhoneNumber("03###%44\"7");
-		
-		
+
 		createObject.scrollDownBy(-300);
-		
-	
-		
+
 		createObject.scrollDownBy(-300);
 		createObject.clickOnWifiCheckBox();
 		createObject.setWifiPassword("apple");
 		createObject.setWifiName("Public");
-		
-	
-		
+
 		createObject.scrollDownBy(-300);
-	
+
 		createObject.setComment("This is fantastic!");
-		
+
 		createObject.clickOnCreateButton();
-		
-		
+
 		WebElement alertifymessage = driver.findElement(By.xpath("//*[@id=\"ember942\"]/div[1]"));
 		String message = alertifymessage.getAttribute("class");
-		Assert.assertEquals(message,"categories-error-msg");
-		
+		Assert.assertEquals(message, "categories-error-msg");
 
-
-}
+	}
 }

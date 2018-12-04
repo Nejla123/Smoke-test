@@ -13,7 +13,8 @@ import webbasic.model.SuggestChanges;
 public class InvalidEmailSuggestChanges {
 	private WebDriver driver;
 	private SuggestChanges suggestChanges;
-	
+	private String baseURL = "http://www.navigator.ba";
+
 	@BeforeTest
 	public void setupEnviromnent() {
 		System.setProperty("webdriver.chrome.driver",
@@ -21,23 +22,22 @@ public class InvalidEmailSuggestChanges {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		suggestChanges = new SuggestChanges(driver);
-}
+	}
+
 	@Test
 	public void testInvalidEmail() throws InterruptedException {
-		
-		driver.get("http://www.navigator.ba");
+
+		driver.get(baseURL);
 		suggestChanges.clickOnSuggestChangeslink();
 		suggestChanges.setName("Nejla");
 		suggestChanges.setEmail("apple5545@4com");
 		suggestChanges.setComment("Very good");
 		suggestChanges.clickonSubmitbutton();
-		
+
 		Thread.sleep(1000);
 		WebElement alertmessage = driver.findElement(By.xpath("//*[@id=\"mCSB_2\"]/div[1]/div/div/div"));
 		String message = alertmessage.getAttribute("class");
 		Assert.assertEquals(message, "alert alert-success");
-		
-		
-		
+
 	}
 }

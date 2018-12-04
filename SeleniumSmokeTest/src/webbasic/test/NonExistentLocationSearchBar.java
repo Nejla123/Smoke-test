@@ -13,7 +13,8 @@ import webbasic.model.SearchBar;
 public class NonExistentLocationSearchBar {
 	private WebDriver driver;
 	private SearchBar searchBar;
-	
+	private String baseURL = "http://www.navigator.ba";
+
 	@BeforeTest
 	public void setupEnviromnent() {
 		System.setProperty("webdriver.chrome.driver",
@@ -22,25 +23,23 @@ public class NonExistentLocationSearchBar {
 		driver.manage().window().maximize();
 		searchBar = new SearchBar(driver);
 
-}
+	}
 
 	@Test
 	public void testNonExistentLocation() throws InterruptedException {
-		driver.get("http://www.navigator.ba");
+		driver.get(baseURL);
 
 		searchBar.clikOnSearchBar();
 		searchBar.setNameofObject("Hotel Malina");
 		searchBar.clickOnButtonSearch();
-		
+
 		Thread.sleep(1000);
 
-		WebElement searchedObject= driver.findElement(By.xpath("//*[@id=\"mCSB_3\"]/div[1]/div/div[1]/p[1]"));
-		String klasa = searchedObject.getAttribute("class");
-		Assert.assertEquals(klasa,"search-results-for");
-		
+		WebElement searchedObject = driver.findElement(By.xpath("//*[@id=\"mCSB_3\"]/div[1]/div/div[1]/p[1]"));
+		String classAttribute = searchedObject.getAttribute("class");
+		Assert.assertEquals(classAttribute, "search-results-for");
+
 		Thread.sleep(1000);
-		
-		
-		
-}
+
+	}
 }
