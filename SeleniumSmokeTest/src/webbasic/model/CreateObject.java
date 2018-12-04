@@ -152,20 +152,23 @@ public class CreateObject {
 
 	public void setAndSelectCity(String city) throws InterruptedException {
 		cityField.sendKeys(city);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 		cityField.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
 	}
 
+	//
+	//
+
 	public void setAndSelectPlace(String place) throws InterruptedException {
 		placeField.sendKeys(place);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 		placeField.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 	}
 
 	public void setHouseNumber(String houseNumber) throws InterruptedException {
 		houseNumberField.sendKeys(houseNumber);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 	}
 
 	public void moveMarkerLeft(String pixels) {
@@ -177,32 +180,32 @@ public class CreateObject {
 
 	public void clickOnChooseCategory() throws InterruptedException {
 		chooseCategoryButton.click();
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 
 	}
 
 	public void selectFirstCategory() throws InterruptedException {
 		firstCategorySelect.click();
-		Thread.sleep(500);
+//		Thread.sleep(500);
 		firstCategorySelect.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 	}
 
 	public void selectSecondCategory() throws InterruptedException {
 
 		secondCategorySelect.click();
-		Thread.sleep(500);
+//		Thread.sleep(500);
 		secondCategorySelect.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 
 	}
 
 	public void selectThirdCategory() throws InterruptedException {
 
 		thirdCategorySelect.click();
-		Thread.sleep(500);
+//		Thread.sleep(500);
 		thirdCategorySelect.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 
 	}
 
@@ -212,18 +215,16 @@ public class CreateObject {
 		js.executeScript("var divForScrolling =  document.getElementsByClassName(\"mCSB_container\");"
 				+ "divForScrolling[0].style.top=\"0px\"; ");
 
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 	}
 
 	public void scrollToBottom() throws InterruptedException {
 //	
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		js.executeScript("var divForScrolling =  document.getElementsByClassName(\"mCSB_container\");"
-//				+ "divForScrolling[0].style.top=\"-1088px\"; ");
 		js.executeScript("var divForScrolling =  document.getElementsByClassName(\"mCSB_container\");"
 				+ "divForScrolling[0].style.top=\"-1100px\"; ");
 
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 	}
 
 	public void scrollDownBy(Integer pixels) throws InterruptedException {
@@ -238,7 +239,7 @@ public class CreateObject {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript(javaScriptCode);
 
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 
 	}
 
@@ -257,7 +258,7 @@ public class CreateObject {
 
 //		createButton = driver.findElement(By.xpath("//*[@id=\"place-form\"]/div[10]/div/button[1]"));
 		createButton.click();
-		Thread.sleep(2500);
+//		Thread.sleep(2500);
 	}
 
 	public void clickOnTuesday() {
@@ -374,7 +375,7 @@ public class CreateObject {
 	public void uploadImg(String string) throws InterruptedException {
 		uploadImg.sendKeys(string);
 		// uploadImg.sendKeys( Keys.ENTER);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 
 	}
 
@@ -387,14 +388,14 @@ public class CreateObject {
 
 	public void setSearchInputField(String string) throws InterruptedException {
 		searchInputField.sendKeys(string);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 		searchInputField.sendKeys(Keys.ENTER);
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 	}
 
 	public void clickOnObjectField() throws InterruptedException {
 		objectField.click();
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 
 	}
 

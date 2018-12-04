@@ -1,5 +1,7 @@
 package webbasic.test;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +24,7 @@ public class SmokeTest {
 				"C:\\Users\\Nejla\\Downloads\\chromedriver_win32\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		createObject = new CreateObject(driver);
 	}
 
@@ -33,12 +36,12 @@ public class SmokeTest {
 		createObject.setAndSelectCity("Sarajevo");
 		createObject.setAndSelectPlace("Omera Kovača");
 		createObject.setHouseNumber("4");
-
+		//
 		createObject.moveMarkerLeft("-400px");
 		createObject.clickOnChooseCategory();
 		createObject.selectFirstCategory();
 		createObject.selectSecondCategory();
-
+		//
 		createObject.selectThirdCategory();
 		createObject.scrollToBottom();
 		createObject.clickOnCreateButton();
@@ -46,14 +49,14 @@ public class SmokeTest {
 		WebElement createdObject = driver.findElement(By.className("name"));
 		System.out.println("title attribute" + createdObject.getAttribute("title"));
 		Assert.assertEquals(createdObject.getAttribute("title"), "Milky");
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 
 	}
 
 	@Test
 	public void assertExistingObject() throws InterruptedException {
 
-		driver.get("http://www.navigator.ba");
+		driver.get(baseURL);
 		createObject.setSearchInputField("hotel han");
 		createObject.clickOnObjectField();
 
