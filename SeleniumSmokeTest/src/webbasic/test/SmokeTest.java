@@ -28,7 +28,7 @@ public class SmokeTest {
 		createObject = new CreateObject(driver);
 	}
 
-	@Test
+	@Test(priority = 1)
 	public void testCreatingObject() throws InterruptedException {
 		driver.get(baseURL);
 		createObject.clickOnCreateObjectLink();
@@ -53,7 +53,7 @@ public class SmokeTest {
 
 	}
 
-	@Test
+	@Test(priority = 2)
 	public void assertExistingObject() throws InterruptedException {
 
 		driver.get(baseURL);
