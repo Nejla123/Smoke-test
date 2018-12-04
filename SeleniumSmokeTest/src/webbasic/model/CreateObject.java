@@ -1,15 +1,10 @@
 package webbasic.model;
 
-import java.security.Key;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.openqa.selenium.support.FindBy;
-
 import org.openqa.selenium.support.PageFactory;
 
 public class CreateObject {
@@ -129,22 +124,19 @@ public class CreateObject {
 
 	@FindBy(xpath = "//*[@id=\"place-form\"]/div[10]/div/button[1]")
 	WebElement createButton;
-	
+
 	@FindBy(xpath = "//*[@id=\"ember564\"]")
 	WebElement searchInputField;
-	
-	@FindBy(xpath= "//*[@id=\"ember1036\"]/div")
+
+	@FindBy(xpath = "//*[@id=\"ember1036\"]/div")
 	WebElement objectField;
-	
+
 	@FindBy(xpath = "//*[@id=\"ember551\"]/img")
 	WebElement homeImg;
 
-	
 	@FindBy(id = "fileToUpload")
 	WebElement uploadImg;
-	
 
-	
 	public CreateObject(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -381,9 +373,8 @@ public class CreateObject {
 
 	public void uploadImg(String string) throws InterruptedException {
 		uploadImg.sendKeys(string);
-		//uploadImg.sendKeys( Keys.ENTER);
+		// uploadImg.sendKeys( Keys.ENTER);
 		Thread.sleep(1000);
-
 
 	}
 
@@ -398,14 +389,13 @@ public class CreateObject {
 		searchInputField.sendKeys(string);
 		Thread.sleep(1000);
 		searchInputField.sendKeys(Keys.ENTER);
-		Thread.sleep(1000);		
+		Thread.sleep(1000);
 	}
 
 	public void clickOnObjectField() throws InterruptedException {
 		objectField.click();
 		Thread.sleep(1000);
 
-		
 	}
 
 	public void clickOnHomeImg() {
@@ -414,8 +404,7 @@ public class CreateObject {
 
 	public void clickOnChooseFile() {
 		uploadImg.click();
-		
+
 	}
 
-	
 }
