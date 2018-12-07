@@ -1,4 +1,4 @@
-package webbasic.test;
+package test.regression;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,9 +8,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import webbasic.model.SearchBar;
+import model.SearchBar;
 
-public class NonExistentLocationSearchBar {
+public class ClaimPlaceBsSearchBar {
 	private WebDriver driver;
 	private SearchBar searchBar;
 	private String baseURL = "http://www.navigator.ba";
@@ -26,20 +26,30 @@ public class NonExistentLocationSearchBar {
 	}
 
 	@Test
-	public void testNonExistentLocation() throws InterruptedException {
+	public void testSuggestChanges() throws InterruptedException {
+
 		driver.get(baseURL);
-
 		searchBar.clikOnSearchBar();
-		searchBar.setNameofObject("Hotel Malina");
+		searchBar.setNameofObject("Pekara Dukat");
+		Thread.sleep(1000);
+
 		searchBar.clickOnButtonSearch();
-
 		Thread.sleep(1000);
 
-		WebElement searchedObject = driver.findElement(By.xpath("//*[@id=\"mCSB_3\"]/div[1]/div/div[1]/p[1]"));
-		String classAttribute = searchedObject.getAttribute("class");
-		Assert.assertEquals(classAttribute, "search-results-for");
-
+		searchBar.clickOnObjectButton();
 		Thread.sleep(1000);
+		searchBar.clickOnClaimButton();
+		Thread.sleep(1000);
+
+		searchBar.setCLaimName("Nejla");
+		searchBar.setClaimEmail("appla33@gmail.com");
+		searchBar.setPhoneField("061444444");
+		searchBar.clickOnSendButton();
+		Thread.sleep(1000);
+		WebElement alertmessage = driver.findElement(By.xpath("//*[@id=\"mCSB_5\"]/div[1]/div/div/div"));
+		String message = alertmessage.getAttribute("class");
+		Assert.assertEquals(message, "alert alert-success");
 
 	}
+
 }

@@ -1,4 +1,4 @@
-package webbasic.model;
+package model;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;

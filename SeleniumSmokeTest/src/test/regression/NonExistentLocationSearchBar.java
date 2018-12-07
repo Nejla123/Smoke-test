@@ -1,4 +1,4 @@
-package webbasic.test;
+package test.regression;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,11 +8,11 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import webbasic.model.SuggestChanges;
+import model.SearchBar;
 
-public class CancelSuggestChanges {
+public class NonExistentLocationSearchBar {
 	private WebDriver driver;
-	private SuggestChanges suggestChanges;
+	private SearchBar searchBar;
 	private String baseURL = "http://www.navigator.ba";
 
 	@BeforeTest
@@ -21,20 +21,25 @@ public class CancelSuggestChanges {
 				"C:\\Users\\Nejla\\Downloads\\chromedriver_win32\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		suggestChanges = new SuggestChanges(driver);
+		searchBar = new SearchBar(driver);
+
 	}
 
 	@Test
-	public void testCancelButton() throws InterruptedException {
+	public void testNonExistentLocation() throws InterruptedException {
 		driver.get(baseURL);
-		suggestChanges.clickOnSuggestChangeslink();
-		suggestChanges.setName("Nejla");
-		suggestChanges.setComment("Very good");
-		suggestChanges.clickOnCancelbutton();
 
-		WebElement closesuggestchange = driver.findElement(By.xpath("//*[@id=\"ember564\"]"));
-		String frontpage = closesuggestchange.getAttribute("id");
-		Assert.assertEquals(frontpage, "ember564");
+		searchBar.clikOnSearchBar();
+		searchBar.setNameofObject("Hotel Malina");
+		searchBar.clickOnButtonSearch();
+
+		Thread.sleep(1000);
+
+		WebElement searchedObject = driver.findElement(By.xpath("//*[@id=\"mCSB_3\"]/div[1]/div/div[1]/p[1]"));
+		String classAttribute = searchedObject.getAttribute("class");
+		Assert.assertEquals(classAttribute, "search-results-for");
+
+		Thread.sleep(1000);
 
 	}
 }

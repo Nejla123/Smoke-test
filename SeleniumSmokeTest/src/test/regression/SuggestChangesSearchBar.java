@@ -1,4 +1,4 @@
-package webbasic.test;
+package test.regression;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import webbasic.model.SearchBar;
+import model.SearchBar;
 
 public class SuggestChangesSearchBar {
 	private WebDriver driver;

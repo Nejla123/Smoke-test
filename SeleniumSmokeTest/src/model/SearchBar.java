@@ -1,21 +1,30 @@
-package webbasic.model;
+package model;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class EngSearchBar {
-
+public class SearchBar {
 	WebDriver driver;
-	@FindBy(xpath = "//*[@id=\"ember558\"]")
+	@FindBy(xpath = "//*[@id=\"ember564\"]")
 	WebElement searchInputField;
 
-	@FindBy(xpath = "//*[@id=\"ember549\"]/a/span")
+	@FindBy(xpath = "//*[@id=\"ember555\"]/a")
 	WebElement searchButton;
 
-	@FindBy(xpath = "//*[@id=\"ember996\"]")
+	@FindBy(xpath = "//*[@id=\"ember1002\"]")
 	WebElement objectButton;
+
+	@FindBy(xpath = "//*[@id=\"mCSB_4\"]/div[1]/div[2]/div[4]/button[1]")
+	WebElement suggestChangesonObject;
+
+	@FindBy(xpath = "//*[@id=\"poi_description\"]")
+	WebElement descriptionField;
+
+	@FindBy(xpath = "//*[@id=\"place-form\"]/div[10]/div/button[1]")
+	WebElement suggestChangesButton;
 
 	@FindBy(xpath = "//*[@id=\"mCSB_4\"]/div[1]/div[2]/div[4]/button[2]")
 	WebElement claimButton;
@@ -35,7 +44,7 @@ public class EngSearchBar {
 	@FindBy(xpath = "//*[@id=\"header_container\"]/ul[2]/li[1]/a")
 	WebElement engButton;
 
-	public EngSearchBar(WebDriver driver) {
+	public SearchBar(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -54,6 +63,27 @@ public class EngSearchBar {
 
 	public void clickOnObjectButton() {
 		objectButton.click();
+	}
+
+	public void clickSuggestChangesonObject() {
+		suggestChangesonObject.click();
+	}
+
+	public void setDescription(String description) {
+		descriptionField.sendKeys(description);
+	}
+
+	public void scrollDown(String pixels) throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+
+		js.executeScript("var divForScrolling =  document.getElementsByClassName(\"mCSB_container\");"
+				+ "divForScrolling[0].style.top=\"" + pixels + "\"; ");
+
+		Thread.sleep(2000);
+	}
+
+	public void clickOnSuggestChangesButton() {
+		suggestChangesButton.click();
 	}
 
 	public void clickOnClaimButton() {
